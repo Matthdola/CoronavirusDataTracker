@@ -1,6 +1,6 @@
 package io.javabrains.models;
 
-public class LocationStats {
+public class LocationStats implements Comparable<LocationStats> {
 	private String state;
 	private String country;
 	private int latestTotalCases;
@@ -113,5 +113,10 @@ public class LocationStats {
 		this.active = active;
 	}
 	
+	@Override
+    public int compareTo(LocationStats l) {
+        return l.getActive() - this.getActive();
+    }
+
 	
 }
