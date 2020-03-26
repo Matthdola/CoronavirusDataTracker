@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Coronavirus Tracker Application</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+    	<nav class="header">
+        	<div class="container">
+            	
+            	<a class="navbar-brand mr-auto" href="#">
+            	<img src="img/covid19.png" class="img" height="40" width="41" alt="Logo">
+            	</a>
+            	<span class="title">Coronavirus Tracker</span>
+            	
+        	</div>
+    	</nav>
+		<div class="container">
+			<h1 class="display-4">Coronavirus Tracker Application</h1>
+			<p class="lead">This application lists the current number of cases reported accross the globe</p>
+		
+			<div class="jumbotron geste_prevention">
+				<div class="row">
+					<div class="col-4">
+						<p>
+							<span class="lead">Total case as reported today</span>
+							<span class="display-1 badge badge-warning" th:text="${totalReportedCases}"></span>
+						</p>
+						<hr class="my-4">
+						<p>
+							<span class="lead">Total Deaths</span>
+							<span  class="display-1 badge badge-danger" th:text="${totaldeaths}"></span>
+						</p>
+					</div>
+					<div class="col-8 text-right" >
+						<img src="img/covid19_Gestes_de_prevention.jpg" height="400" width="500" class="text-right" />
+					</div>
+				</div>
+
+				
+			</div> 
+			<table class="table table-bordered">
+				<tr> 
+					<th>State</th>
+					<th>Country</th>
+					<th>Active cases</th>
+					<th>Recovered cases</th>
+					<th>Deaths</th>
+				<tr>
+				<tr th:each="locationStat : ${locationStats}">
+					<td th:text="${locationStat.state}"></td>
+					<td th:text="${locationStat.country}"></td>
+					<td th:text="${locationStat.active}">0</td>
+					<td th:text="${locationStat.recovered}">0</td>
+					<td th:text="${locationStat.deaths}">0</td>
+				</tr>
+			</table>
+		</div>
+		<footer>
+    		<span class="text-center">&copy: All rights reserved 2020</span>
+		</footer>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
